@@ -113,7 +113,7 @@ export default function MemeGenerator() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-500 text-foreground">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground bg-neutral-500">
       <div className="max-w-4xl w-full px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center space-y-8">
           <div className="text-center space-y-2">
@@ -121,7 +121,7 @@ export default function MemeGenerator() {
               Meme Generator
             </h1>
             <p className="text-muted-foreground bg-white text-gray-500">
-              <b>Create custom memes with our easy-to-use generator.</b>
+              Create custom memes with our easy-to-use generator.
             </p>
           </div>
 
@@ -129,7 +129,7 @@ export default function MemeGenerator() {
             <ClipLoader className="w-12 h-12 text-blue-500" />
           ) : (
             <>
-              <div className="w-full overflow-x-scroll whitespace-nowrap py-2 ">
+              <div className="w-full overflow-x-scroll whitespace-nowrap py-2">
                 {visibleMemes.map((meme) => (
                   <Card
                     key={meme.id}
@@ -310,24 +310,29 @@ export default function MemeGenerator() {
                 <div className="mt-4">
                   <Button onClick={handleDownload}>Download Meme</Button>
                 </div>
-{/* Stickers */}
-<div className="mt-4 flex space-x-2">
-  {stickers.map((sticker) => (
-    <Button
-      key={sticker}
-      onClick={() => setSelectedSticker(sticker)}
-      className="bg-transparent text-2xl transition-colors duration-300 hover:bg-black "
-    >
-      {sticker}
-    </Button>
-  ))}
-</div>
 
+                {/* Stickers */}
+                <div className="mt-4 flex space-x-2 hover:bg-white">
+                  {stickers.map((sticker) => (
+                    <Button
+                    key={sticker}
+                    onClick={() => setSelectedSticker(sticker)}
+                    className={`bg-transparent text-2xl transition-colors duration-300 ${selectedSticker === sticker ? 'bg-white text-black' : ''}`}
+                  >
+                    {sticker}
+                  </Button>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+
     </div>
   );
 }
