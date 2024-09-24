@@ -130,25 +130,26 @@ export default function MemeGenerator() {
           ) : (
             <>
               <div className="w-full overflow-x-scroll whitespace-nowrap py-2">
-                {visibleMemes.map((meme) => (
-                  <Card
-                    key={meme.id}
-                    className="inline-block bg-muted rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 mx-2"
-                    onClick={() => setSelectedMeme(meme)}
-                  >
-                    <Image
-                      src={meme.url}
-                      alt={meme.name}
-                      width={300}
-                      height={300}
-                      className="object-cover w-full h-full"
-                    />
-                    <CardContent>
-                      <p className="text-center">{meme.name}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+  {visibleMemes.map((meme) => (
+    <Card
+      key={meme.id}
+      className="inline-block bg-muted rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 mx-2"
+      onClick={() => setSelectedMeme(meme)}
+    >
+      <Image
+        src={meme.url}
+        alt={meme.name}
+        width={300}
+        height={300}
+        className="object-cover w-full h-full"
+      />
+      <CardContent>
+        <p className="text-center">{meme.name}</p>
+      </CardContent>
+    </Card> // Ensure you have this closing tag for the Card component
+  ))}
+</div>
+
               {visibleMemes.length < memes.length && (
                 <Button
                   onClick={loadMoreMemes}
@@ -328,11 +329,6 @@ export default function MemeGenerator() {
           )}
         </div>
       </div>
-    </div>
-  );
-}
-
-
     </div>
   );
 }
